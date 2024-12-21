@@ -85,7 +85,9 @@ export const getUsers = query({
             throw new ConvexError("Unauthorized");
         }
         const users = ctx.db.query("users").collect();
-        return users;
+        return (await users).filter(
+            (user) => user.tokenIdentifier !== identity.tokenIdentifier
+        );
     },
 });
 
