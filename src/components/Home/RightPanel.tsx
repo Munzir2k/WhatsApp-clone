@@ -7,13 +7,17 @@ import ChatPlaceHolder from "./ChatPlaceholder";
 import MessageContainer from "./MessageContainer";
 import MessageInput from "./MessageInput";
 import GroupMembersDialog from "./GroupMembersDialog";
+import { useConversationStore } from "@/store/chatStore";
 
 const RightPanel = () => {
-    const selectedConversation = null;
+    const { selectedConversation, setSelectedConversation } =
+        useConversationStore();
     if (!selectedConversation) return <ChatPlaceHolder />;
 
-    const conversationName = "John Doe";
-    const isGroup = true;
+    const conversationName =
+        selectedConversation.groupName || selectedConversation.name;
+    const conversationImage =
+        selectedConversation.groupImage || selectedConversation.image;
 
     return (
         <div className="w-3/4 flex flex-col">
@@ -23,7 +27,7 @@ const RightPanel = () => {
                     <div className="flex gap-3 items-center">
                         <Avatar>
                             <AvatarImage
-                                src={"/placeholder.png"}
+                                src={conversationImage || "/placeholder.png"}
                                 className="object-cover"
                             />
                             <AvatarFallback>
@@ -32,7 +36,11 @@ const RightPanel = () => {
                         </Avatar>
                         <div className="flex flex-col">
                             <p>{conversationName}</p>
-                            {isGroup && <GroupMembersDialog />}
+                            {selectedConversation.isGroup && (
+                                <GroupMembersDialog
+                                    selectedConversation={selectedConversation}
+                                />
+                            )}
                         </div>
                     </div>
 
@@ -40,7 +48,11 @@ const RightPanel = () => {
                         <a href="/video-call" target="_blank">
                             <Video size={23} />
                         </a>
-                        <X size={16} className="cursor-pointer" />
+                        <X
+                            size={16}
+                            className="cursor-pointer"
+                            onClick={() => setSelectedConversation(null)}
+                        />
                     </div>
                 </div>
             </div>

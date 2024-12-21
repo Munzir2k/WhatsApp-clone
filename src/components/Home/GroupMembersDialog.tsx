@@ -1,6 +1,5 @@
 /** @format */
 
-import { users } from "@/dummy-data/db";
 import {
     Dialog,
     DialogContent,
@@ -11,8 +10,18 @@ import {
 } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Crown } from "lucide-react";
+import { Conversation } from "@/store/chatStore";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
-const GroupMembersDialog = () => {
+type GroupMembersProps = {
+    selectedConversation: Conversation;
+};
+
+const GroupMembersDialog = ({ selectedConversation }: GroupMembersProps) => {
+    const users = useQuery(api.users.getGroupMembers, {
+        conversationId: selectedConversation._id,
+    });
     return (
         <Dialog>
             <DialogTrigger>
@@ -49,7 +58,8 @@ const GroupMembersDialog = () => {
                                                 {user.name ||
                                                     user.email.split("@")[0]}
                                             </h3>
-                                            {user.admin && (
+                                            {user._id ===
+                                                selectedConversation.admin && (
                                                 <Crown
                                                     size={16}
                                                     className="text-yellow-400"
