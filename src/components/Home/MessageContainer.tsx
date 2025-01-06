@@ -12,7 +12,6 @@ const MessageContainer = () => {
         conversation: selectedConversation!._id,
     });
     const me = useQuery(api.users.getMe);
-    console.log(messages);
 
     return (
         <div className="relative p-3 flex-1 overflow-auto h-full bg-chat-tile-light dark:bg-chat-tile-dark">
