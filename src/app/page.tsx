@@ -2,7 +2,6 @@
 
 import LeftPanel from "@/components/Home/LeftPanel";
 import RightPanel from "@/components/Home/RightPanel";
-import Image from "next/image";
 
 export default function Home() {
     return (

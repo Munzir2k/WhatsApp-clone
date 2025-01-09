@@ -4,6 +4,7 @@
  */
 
 const nextConfig = {
+    reactStrictMode: false,
     images: {
         remotePatterns: [{ hostname: "standing-egret-193.convex.cloud" }],
     },
