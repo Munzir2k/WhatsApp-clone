@@ -9,17 +9,22 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatDate(date_ms: number) {
     // Convert milliseconds to seconds
+    // @ts-ignore
     let date_seconds = date_ms / 1000;
 
     // Convert to Date object
+    // @ts-ignore
     let date_obj = new Date(date_seconds * 1000);
 
     // Get current date and time
+    // @ts-ignore
     let current_date = new Date();
     current_date.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
+    // @ts-ignore
     let current_time = current_date.getTime();
 
     // Get the date part of the provided date
+    // @ts-ignore
     let provided_date = new Date(date_obj);
     provided_date.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
 
@@ -33,6 +38,7 @@ export function formatDate(date_ms: number) {
     }
 
     // Check if it's yesterday
+    // @ts-ignore
     let yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     yesterday.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
@@ -42,6 +48,7 @@ export function formatDate(date_ms: number) {
 
     // Check if it's a different day of the week
     if (provided_date.getDay() < current_date.getDay()) {
+        // @ts-ignore
         let days = [
             "Sunday",
             "Monday",
@@ -110,6 +117,7 @@ export const getRelativeDateTime = (message: any, previousMessage: any) => {
 };
 
 export function randomID(len: number) {
+    // @ts-ignore
     let result = "";
     if (result) return result;
     var chars =

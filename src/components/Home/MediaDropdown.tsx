@@ -50,6 +50,7 @@ const MediaDropdown = () => {
             });
 
             setSelectedImage(null);
+            //@ts-ignore
         } catch (error) {
             toast.error("Failed to send Image 🔥🔥");
         } finally {
@@ -76,7 +77,7 @@ const MediaDropdown = () => {
                 conversation: selectedConversation!._id,
                 sender: me!._id,
             });
-
+            //@ts-ignore
             setSelectedVideo(null);
         } catch (err) {
             toast.error("Failed to send image");

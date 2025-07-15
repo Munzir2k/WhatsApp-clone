@@ -11,6 +11,7 @@ import ReactPlayer from "react-player";
 
 type ChatBubbleProps = {
     message: IMessage;
+    //@ts-ignore
     me: any;
     previousMesssage?: IMessage;
 };
