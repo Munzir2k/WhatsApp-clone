@@ -1,20 +1,13 @@
 /** @format */
 
-import { FlatCompat } from "@eslint/eslintrc";
+// eslint.config.js
+import { defineConfig } from "eslint/config";
 
-const compat = new FlatCompat({
-    // import.meta.dirname is available after Node.js v20.11.0
-    baseDirectory: import.meta.dirname,
-});
-
-const eslintConfig = [
-    ...compat.config({
-        extends: ["next"],
+export default defineConfig([
+    // matches all files because it doesn't specify the `files` or `ignores` key
+    {
         rules: {
-            "react/no-unescaped-entities": "off",
-            "@next/next/no-page-custom-font": "off",
+            semi: "error",
         },
-    }),
-];
-
-export default eslintConfig;
+    },
+]);
