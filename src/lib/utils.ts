@@ -48,7 +48,7 @@ export function formatDate(date_ms: number) {
 
     // Check if it's a different day of the week
     if (provided_date.getDay() < current_date.getDay()) {
-        let days = [
+        const days = [
             "Sunday",
             "Monday",
             "Tuesday",
@@ -118,7 +118,7 @@ export const getRelativeDateTime = (message: any, previousMessage: any) => {
 export function randomID(len: number) {
     let result = "";
     if (result) return result;
-    var chars =
+    let chars =
             "12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP",
         maxPos = chars.length,
         i;
