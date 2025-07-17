@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 
 interface ComponentVisibleHook {
-    // @ts-ignore
     ref: React.RefObject<any>;
     isComponentVisible: boolean;
     setIsComponentVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +13,7 @@ export default function useComponentVisible(
 ): ComponentVisibleHook {
     const [isComponentVisible, setIsComponentVisible] =
         useState(initialIsVisible);
-    //@ts-ignore
+
     const ref = useRef<any>(null);
 
     const handleClickOutside = (event: MouseEvent) => {

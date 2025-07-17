@@ -32,7 +32,6 @@ const MessageInput = () => {
                 sender: me!._id,
             });
             setMsgText("");
-            //@ts-ignore
         } catch (error: any) {
             toast.error(error.message);
             console.log(error);

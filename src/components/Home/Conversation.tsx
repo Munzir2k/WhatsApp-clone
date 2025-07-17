@@ -8,7 +8,6 @@ import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useConversationStore } from "@/store/chatStore";
 
-//@ts-ignore
 const Conversation = ({ conversation }: { conversation: any }) => {
     const conversationImage = conversation.groupImage || conversation.image;
     const conversationName = conversation.groupName || conversation.name;
