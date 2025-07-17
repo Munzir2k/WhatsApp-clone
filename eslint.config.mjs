@@ -4,8 +4,13 @@
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-    // matches all files because it doesn't specify the `files` or `ignores` key
+    // matches all files because it doesn't specify
+    //  the `files` or `ignores` key
+
     {
+        "eslint.options": {
+            "@typescript-eslint/no-unused-vars": "off",
+        },
         rules: {
             semi: "error",
         },
